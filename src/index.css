@@ -2,7 +2,5 @@
 html, body, :global(#root) {
   height: 100%;
 }
-.test {
-  color: #000;
-}
+
 
