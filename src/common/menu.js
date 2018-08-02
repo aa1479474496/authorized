@@ -1,10 +1,10 @@
-// import { isUrl } from '../utils/request';
-const reg = /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/;
+import { isUrl } from '../utils/utils';
 
-function isUrl(path) {
-  return reg.test(path);
-}
 const menuData = [
+  {
+    name: '首页',
+    path: ''
+  },
   {
     name: '详情页',
     path: 'profile',
@@ -40,20 +40,19 @@ function formatter(data, parentPath = '/', parentAuthority) {
   })
 }
 
-const getMenuData = () => formatter(menuData);
-getMenuData();
+export const getMenuData = () => formatter(menuData);
 
-getFlatMenuData(getMenuData());
-function getFlatMenuData(menus) {
-  let keys = {};
-  menus.forEach(item => {
-    if (item.children) {
-      keys[item.path] = { ...item };
-      keys = { ...keys, ...getFlatMenuData(item.children) };
-    }
-    else {
-      keys[item.path] = { ...item };
-    }
-  });
-  return keys;
-}
+// getFlatMenuData(getMenuData());
+// function getFlatMenuData(menus) {
+//   let keys = {};
+//   menus.forEach(item => {
+//     if (item.children) {
+//       keys[item.path] = { ...item };
+//       keys = { ...keys, ...getFlatMenuData(item.children) };
+//     }
+//     else {
+//       keys[item.path] = { ...item };
+//     }
+//   });
+//   return keys;
+// }
