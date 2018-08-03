@@ -55,6 +55,15 @@ export const getRouterData = app => {
     },
     '/profile/advanced': {
       component: dynamicWrapper(app, [], () => import('../routes/Profile/AdvancedProfile'))
+    },
+    '/user': {
+      component: dynamicWrapper(app, [], () => import('../routes/User/User'))
+    },
+    '/user/login': {
+      component: dynamicWrapper(app, [], () => import('../routes/User/Login'))
+    },
+    '/user/register': {
+      component: dynamicWrapper(app, [], () => import('../routes/User/Register'))
     }
   }
 

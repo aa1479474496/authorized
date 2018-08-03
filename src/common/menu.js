@@ -19,6 +19,20 @@ const menuData = [
         authority: 'admin'
       }
     ]
+  },
+  {
+    name: '用户',
+    path: 'user',
+    children: [
+      {
+        name: '注册',
+        path: 'register'
+      },
+      {
+        name: '登录',
+        path: 'login'
+      }
+    ]
   }
 ]
 
