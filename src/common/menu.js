@@ -33,6 +33,16 @@ const menuData = [
         path: 'login'
       }
     ]
+  },
+  {
+    name: '异常页',
+    path: 'exception',
+    children: [
+      {
+        name: '403',
+        path: '403'
+      }
+    ]
   }
 ]
 
