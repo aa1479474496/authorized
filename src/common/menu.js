@@ -41,6 +41,10 @@ const menuData = [
       {
         name: '403',
         path: '403'
+      },
+      {
+        name: '404',
+        path: '404'
       }
     ]
   }

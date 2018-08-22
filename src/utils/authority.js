@@ -1,5 +1,5 @@
 export function getAuthority() {
-  return localStorage.getItem('authority') || 'guest';
+  return localStorage.getItem('authority') || 'user';
 }
 
 export function setAuthority(authority) {

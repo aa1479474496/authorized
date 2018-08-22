@@ -9,30 +9,26 @@ const { AuthorizedRoute } = Authorized;
 function RouterConfig({ history, app }) {
   const routerData = getRouterData(app);
   // console.log(routerData);
-  const IndexPage = routerData['/'].component;
-  const BasicProfile = routerData['/profile/basic'].component;
-  const AdvancedProfile = routerData['/profile/advanced'].component;
+  const BasicLayout = routerData['/'].component;
+  const IndexPage = routerData['/home'].component;
+  // const BasicProfile = routerData['/profile/basic'].component;
+  // const AdvancedProfile = routerData['/profile/advanced'].component;
+  const NotFound = routerData['/exception/404'].component;
   const User = routerData['/user'].component;
-
+  // <Route path="/" exact component={IndexPage} />
+  console.log('history:', history);
   return (
     <Router history={history}>
-      <Switch>
-        <Route path="/" exact component={IndexPage} />
-        <Route path="/user" component={User} />
+      <Switch>    
+        <Route path="/user" component={User} />       
         <AuthorizedRoute
-            path="/profile"
-            render={props => <BasicProfile {...props} />}
-            authority={['admin', 'user']}
-            redirectPath="/user"
-          />
-        {
-          /**
-           * 
-           * <Route path="/profile/basic" exact component={BasicProfile} />
-            <Route path="/profile/advanced" exact component={AdvancedProfile} />
-           */
-        }
-        
+          path="/"
+          render={props => <BasicLayout {...props} />}
+          authority={['admin', 'user']}
+          redirectPath="/user"
+        />  
+        <Route path="/" exact component={IndexPage} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
@@ -50,3 +46,13 @@ function RouterConfig({ history, app }) {
 }
 
 export default RouterConfig;
+
+
+
+// <Route path="/" exact component={IndexPage} />
+//         <Route component={NotFound} />
+//         <AuthorizedRoute
+//           path="/"
+//           render={props => <BasicLayout {...props} />}
+//           redirectPath="/user"
+//         />

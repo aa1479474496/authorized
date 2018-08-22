@@ -11,6 +11,6 @@ const renderAuthorize = Authorized => {
     return Authorized;
   }
 }
-
+export { CURRENT };
 export default Authorized => renderAuthorize(Authorized);
 

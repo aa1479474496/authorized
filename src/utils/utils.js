@@ -17,7 +17,7 @@ export function isUrl(path) {
 //   '/user/register/1111': { component: f, name: "注册1111", authority: undefined }
 // }
 
-function getRoutes(path, routerData) {
+export function getRoutes(path, routerData) {
   let routes = Object.keys(routerData).filter(
     routePath => routePath.indexOf(path) === 0 && routePath !== path
   )
