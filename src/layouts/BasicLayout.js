@@ -11,6 +11,7 @@ const { AuthorizedRoute } = Authorized;
 export default class BasicLayout extends Component {
   render() {
     const { match, routerData } = this.props;
+    console.log('layout:', this.props);
     const layout = (
       <Switch>
         {getRoutes(match.path, routerData).map(item => (
