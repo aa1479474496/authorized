@@ -6,8 +6,12 @@ const menuData = [
     path: ''
   },
   {
+    name: '列表页',
+    path: 'list'
+  },
+  {
     name: '详情页',
-    path: 'profile',
+    path: 'auth/profile',
     children: [
       {
         name: '基础详情页',

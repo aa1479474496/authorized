@@ -46,24 +46,27 @@ function getFlatMenuData(menus) {
 }
 
 export const getRouterData = app => {
-  const routerConfig = {
+  const routerConfig = {   
     '/': {
-      component: dynamicWrapper(app, [], () => import('../layouts/BasicLayout'))
-    },
-    '/home': {
       component: dynamicWrapper(app, ['index'], () => import('../routes/IndexPage'))
     },
-    '/profile/basic': {
+    '/auth': {
+      component: dynamicWrapper(app, [], () => import('../layouts/BasicLayout'))
+    },
+    '/auth/profile/basic': {
       component: dynamicWrapper(app, [], () => import('../routes/Profile/BasicProfile'))
     },
-    '/profile/advanced': {
+    '/auth/profile/advanced': {
       component: dynamicWrapper(app, [], () => import('../routes/Profile/AdvancedProfile'))
+    },
+    '/list': {
+      component: dynamicWrapper(app, ['list'], () => import('../routes/List/index'))
     },
     '/user': {
       component: dynamicWrapper(app, [], () => import('../routes/User/User'))
     },
     '/user/login': {
-      component: dynamicWrapper(app, [], () => import('../routes/User/Login'))
+      component: dynamicWrapper(app, ['login'], () => import('../routes/User/Login'))
     },
     '/user/register': {
       component: dynamicWrapper(app, [], () => import('../routes/User/Register'))
