@@ -9,7 +9,7 @@ import { getRoutes } from '../../utils/utils';
 export default class User extends Component {
   render() {
     const { match, routerData, location } = this.props;
-    console.log('user:', this.props);
+
     const l = location.state.location;
 
     // const {state:{location}} = location;
