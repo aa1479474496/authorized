@@ -1,5 +1,6 @@
 import { routerRedux } from 'dva/router';
-// import Login from '../routes/User/Register';
+import { setAuthority } from '../utils/authority';
+import { reloadAuthorized } from '../utils/Authorized';
 
 export default {
   namespace: 'login',
@@ -14,23 +15,22 @@ export default {
   },
   effects: {
     *login({ payload }, { put }) {
-      console.log(222);
       yield put ({
         type: 'saveLogin',
         payload
       });
+      reloadAuthorized();
+      yield put(routerRedux.push('/'));
     }
   },
 
   reducers: {
     saveLogin(state, { payload }) {
+      setAuthority(payload.auth);
       return {
         ...state,
         ...payload
       }
     }
   }
-
-
-
 }

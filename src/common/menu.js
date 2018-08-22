@@ -10,6 +10,10 @@ const menuData = [
     path: 'list'
   },
   {
+    name: '测试页',
+    path: 'test'
+  },
+  {
     name: '详情页',
     path: 'auth/profile',
     children: [

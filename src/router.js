@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { Router, Route, Switch, Redirect } from 'dva/router';
 import { getRouterData } from './common/router';
 import Authorized from './utils/Authorized';
 
@@ -11,10 +11,11 @@ function RouterConfig({ history, app }) {
   const IndexPage = routerData['/'].component;
   const BasicLayout = routerData['/auth'].component;
   const List = routerData['/list'].component;
+  const Test = routerData['/test'].component;
   const NotFound = routerData['/exception/404'].component;
   const NotAuth = routerData['/exception/403'].component;
   const User = routerData['/user'].component;
-
+  // <Route path="/list" exact component={List}  />
   return (
     <Router history={history}>
       <Switch>    
@@ -23,9 +24,11 @@ function RouterConfig({ history, app }) {
           path="/auth"
           render={props => <BasicLayout {...props} />}
           authority={['admin', 'user']}
+          test="aaaa"
           redirectPath="/user"
         />
-        <Route path="/list" exact component={List} />  
+        <Route path="/list" exact render={() => <Redirect to={{ pathname: '/test' ,state: {authority: 123}}} />}/>  
+        <Route path="/test" exact component={Test} />  
         <Route path="/exception/403" exact component={NotAuth} />  
         <Route path="/" exact component={IndexPage} />
 
