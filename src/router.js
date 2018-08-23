@@ -24,10 +24,9 @@ function RouterConfig({ history, app }) {
           path="/auth"
           render={props => <BasicLayout {...props} />}
           authority={['admin', 'user']}
-          test="aaaa"
           redirectPath="/user"
         />
-        <Route path="/list" exact render={() => <Redirect to={{ pathname: '/test' ,state: {authority: 123}}} />}/>  
+        <Route path="/list" exact component={List}/>  
         <Route path="/test" exact component={Test} />  
         <Route path="/exception/403" exact component={NotAuth} />  
         <Route path="/" exact component={IndexPage} />

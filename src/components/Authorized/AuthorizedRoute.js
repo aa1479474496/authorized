@@ -5,15 +5,15 @@ import Authorized from './Authorized';
 
 class AuthorizedRoute extends React.Component {
   render() {
-    const { component: Component, render, authority, redirectPath, ...rest } = this.props;   
-    console.log('authRoute:', this.props);
+    const { component: Component, render, authority, redirectPath, ...rest } = this.props;  
+    const fromPath = rest.location.pathname; 
+    console.log('fromPath:', fromPath);
     return (
       <Authorized
         authority={authority}
-        noMatch={<Route {...rest}  render={() => <Redirect to={{ pathname: redirectPath ,state: {location: rest.location}}} />}/>}
+        noMatch={<Route {...rest}  render={() => <Redirect to={{ pathname: redirectPath ,state: {fromPath}}} />}/>}
       >
         <Route {...rest} render={props => (Component ? <Component {...props} /> : render(props))} />
-        123
       </Authorized>
     );
   }

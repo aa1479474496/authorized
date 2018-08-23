@@ -10,9 +10,26 @@ export default class User extends Component {
   render() {
     const { match, routerData, location } = this.props;
 
-    const l = location.state.location;
+    console.log('user props:', this.props);
 
-    // const {state:{location}} = location;
+    const fromPath = location.state && location.state.fromPath || '';
+    // if (fromPath) {
+
+
+
+    //   try {
+    //     const urlParams = new URL(window.location.href);
+    //     urlParams.searchParams.set('redirect', fromPath);
+    //     window.history.replaceState(null, 'login', urlParams.href);
+    //   }
+    //   finally {
+
+    //   }
+    // }
+
+
+
+    console.log('fromPath:',fromPath);
     const routes = getRoutes(match.path, routerData);
     return (
       <div>
@@ -22,8 +39,8 @@ export default class User extends Component {
           {routes.map(item => (
             <Route key={item.key} path={item.path} component={item.component} exact={item.exact} />
           ))}
-        
-          <Redirect exact from="/user" to={{ pathname:"/user/login" ,state: {location: l}}} />
+
+          <Redirect exact from="/user" to={{ pathname: "/user/login", state: { fromPath } }} />
         </Switch>
       </div>
     )

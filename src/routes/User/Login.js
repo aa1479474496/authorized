@@ -18,11 +18,24 @@ export default class Login extends Component {
   render() {
     console.log('login:', this.props);
     const {
-      login: {auth}
+      login: { auth },
+      location
     } = this.props;
 
+    const fromPath = location.state && location.state.fromPath || '';
+    console.log(window.location.href, ":", fromPath);
+    if (fromPath) {
+      try {
+        const urlParams = new URL(window.location.href);
+        urlParams.searchParams.set('redirect', fromPath);
+        window.history.replaceState(null, 'login', urlParams.href);
+      }
+      finally {
+      }
+    }
+
     const authTitle = () => {
-      if(!auth) {
+      if (!auth) {
         return (
           <span>暂未登录</span>
         )
@@ -36,7 +49,7 @@ export default class Login extends Component {
       <div>
         <h3>login----{authTitle()}</h3>
         <button onClick={() => this.login('admin')}>以admin身份登录</button>
-        <button onClick={() => this.login('user')} style={{marginLeft: '20px'}}>以user身份登录</button>
+        <button onClick={() => this.login('user')} style={{ marginLeft: '20px' }}>以user身份登录</button>
       </div>
     )
   }
