@@ -27,7 +27,6 @@ import { CURRENT } from './renderAuthorize';
          }
        }
      }
-     console.log('href:30' ,window.location.href);
      return Exception;
    }
 
@@ -44,7 +43,6 @@ import { CURRENT } from './renderAuthorize';
          }
        }
      }
-     console.log('href:47' ,window.location.href);
      return Exception;
    }
    throw new Error('unsupported parameters');

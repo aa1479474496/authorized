@@ -10,7 +10,6 @@ export default {
   },
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
-      // console.log(111);
     },
   },
   effects: {
@@ -21,26 +20,19 @@ export default {
       });
       reloadAuthorized();
       let urlParams;
-      let redirect; 
+      let redirect;
       try {
-        urlParams = new URL(window.location.href);
-        redirect = urlParams.searchParams.get('redirect');
+        urlParams = window.location.href;
+        redirect = decodeURIComponent(urlParams.split('redirect=')[1]);
       }
       finally {
-
       }
-      if(redirect) {
-        urlParams.searchParams.delete('redirect');
-        window.history.replaceState(null, 'redirect', urlParams.href);
-        yield put(routerRedux.push(redirect));
+      if (redirect) {
+        yield put(routerRedux.replace(redirect));
       }
       else {
         yield put(routerRedux.push('/'));
       }
-
-      console.log('loginModel:', redirect);
-      
-      
     }
   },
 

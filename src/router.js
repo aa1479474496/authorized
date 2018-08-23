@@ -15,6 +15,7 @@ function RouterConfig({ history, app }) {
   const NotFound = routerData['/exception/404'].component;
   const NotAuth = routerData['/exception/403'].component;
   const User = routerData['/user'].component;
+  // <Route path="/list" exact render={() => <Redirect to={{ pathname: '/test', search:'?name=123'}} />}/>  
   // <Route path="/list" exact component={List}  />
   return (
     <Router history={history}>
@@ -26,11 +27,10 @@ function RouterConfig({ history, app }) {
           authority={['admin', 'user']}
           redirectPath="/user"
         />
-        <Route path="/list" exact component={List}/>  
+        <Route path="/list" exact component={List}  />
         <Route path="/test" exact component={Test} />  
         <Route path="/exception/403" exact component={NotAuth} />  
         <Route path="/" exact component={IndexPage} />
-
         <Route component={NotFound} />
       </Switch>
     </Router>

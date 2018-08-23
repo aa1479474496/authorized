@@ -16,23 +16,10 @@ export default class Login extends Component {
     })
   }
   render() {
-    console.log('login:', this.props);
     const {
       login: { auth },
       location
     } = this.props;
-
-    const fromPath = location.state && location.state.fromPath || '';
-    console.log(window.location.href, ":", fromPath);
-    if (fromPath) {
-      try {
-        const urlParams = new URL(window.location.href);
-        urlParams.searchParams.set('redirect', fromPath);
-        window.history.replaceState(null, 'login', urlParams.href);
-      }
-      finally {
-      }
-    }
 
     const authTitle = () => {
       if (!auth) {
